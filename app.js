@@ -40,4 +40,12 @@ yargs.command({
     }
 })
 
+yargs.command({
+    command: 'listNotes',
+    describe: 'List all notes',
+    handler(){
+        notes.listNotes()
+    }
+})
+
 yargs.parse()
