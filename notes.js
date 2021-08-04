@@ -11,8 +11,9 @@ const addNote = (title, body) => {
     
     const duplicateNotes = notes.filter((note) => title === note.title
     )
+    const duplicateNote = notes.find((note) => note.title === title)
 
-    if(duplicateNotes.length === 0)
+    if(!duplicateNote)
     {
         notes.push({
             title: title,
@@ -66,9 +67,24 @@ const listNotes = () => {
         console.log(note.title)
     });
 }
+
+const readNote = (title) => {
+    
+    notes = loadNotes()
+    const noteList = notes.find((note)=> note.title===title)
+    if(noteList.length === 0)
+        console.log('No Notes Found')
+    else
+    {
+        noteList.forEach(note => {
+            console.log(note.title + "| " + note.body)
+        })
+    }
+}
 module.exports = {
     getNotes : getNotes,
     addNote : addNote,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote,
 }
