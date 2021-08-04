@@ -9,9 +9,8 @@ const addNote = (title, body) => {
 
     const notes = loadNotes();
     
-    const duplicateNotes = notes.filter((note)=>{
-            return title === note.title;
-    })
+    const duplicateNotes = notes.filter((note) => title === note.title
+    )
 
     if(duplicateNotes.length === 0)
     {
@@ -60,9 +59,16 @@ const removeNote = (title) =>
         console.log('Notes removed');
     }
 }
+const listNotes = () => {
 
+    const notes = loadNotes()
+    notes.forEach(note => {
+        console.log(note.title)
+    });
+}
 module.exports = {
     getNotes : getNotes,
     addNote : addNote,
     removeNote: removeNote,
+    listNotes: listNotes
 }
